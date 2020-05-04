@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/speedreader/static/css/main.1b3764d4.chunk.css",
-    "main.js": "/speedreader/static/js/main.e1b7ca09.chunk.js",
-    "main.js.map": "/speedreader/static/js/main.e1b7ca09.chunk.js.map",
+    "main.js": "/speedreader/static/js/main.2d86e8da.chunk.js",
+    "main.js.map": "/speedreader/static/js/main.2d86e8da.chunk.js.map",
     "runtime-main.js": "/speedreader/static/js/runtime-main.9278a42d.js",
     "runtime-main.js.map": "/speedreader/static/js/runtime-main.9278a42d.js.map",
     "static/js/2.ed21c278.chunk.js": "/speedreader/static/js/2.ed21c278.chunk.js",
     "static/js/2.ed21c278.chunk.js.map": "/speedreader/static/js/2.ed21c278.chunk.js.map",
     "index.html": "/speedreader/index.html",
-    "precache-manifest.67323405b8d1bd81c517fd0b969c9936.js": "/speedreader/precache-manifest.67323405b8d1bd81c517fd0b969c9936.js",
+    "precache-manifest.0a58d6c13cd87935a43f4f4556b56e44.js": "/speedreader/precache-manifest.0a58d6c13cd87935a43f4f4556b56e44.js",
     "service-worker.js": "/speedreader/service-worker.js",
     "static/css/main.1b3764d4.chunk.css.map": "/speedreader/static/css/main.1b3764d4.chunk.css.map",
     "static/js/2.ed21c278.chunk.js.LICENSE.txt": "/speedreader/static/js/2.ed21c278.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.9278a42d.js",
     "static/js/2.ed21c278.chunk.js",
     "static/css/main.1b3764d4.chunk.css",
-    "static/js/main.e1b7ca09.chunk.js"
+    "static/js/main.2d86e8da.chunk.js"
   ]
 }
