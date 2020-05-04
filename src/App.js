@@ -183,7 +183,7 @@ render(){
     return (
       <Router>
             <div className="App">
-        <NavBar/>
+        <NavBar stopStateFunc = {this.stopState}/>
         <Switch>
           <Route exact path = "/">
             <HomeMenu
