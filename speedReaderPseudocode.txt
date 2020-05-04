@@ -1,0 +1,43 @@
+HOMEPAGE
+
+1. React app to create two boxes
+	Each box links (with react-router-dom) to either (1) Paragraph based reading, (2) Single word reading.
+
+2. Create a state that holds: 
+	- wordsPerMinute: (default 250)
+	- content: (default: content explaining this form of speed reading)
+______________________________________________
+
+PARAGRAPH BASED READING
+
+1. On render, setState.content -> variable string that explains pros/cons of paragraph style speed-reading.
+
+2. TextDisplay component that shows the paragraph and content.
+	-content will be run through separateWords() to return an array of words, each word gets rendered into its own span
+3. Component to hold a sidebar with the following buttons.
+	- Start
+		-if state.content.trim === null --> show error
+		else--> call highlighter() which will loop through each span and apply a highlighted styling to it, speed determined based on state.wordsPerMinute.
+	- Stop
+		This will break the highlighter loop initiated by the Start button.
+		   
+	- Change text
+		Display input component that includes a text input and submit input.
+			Submit button -> setState-content to text provided
+					 close textbox
+					 separateWords() (This will separate each word in the content by spaces and return contentArray)
+					 .map to render the array of words into the paragraph, each word will be in a <span>
+4. WPM Component - a number input, which will setState-wordsPerMinute to that specified by the user.
+
+__________________________________________________
+
+ONE WORD READING
+1. On render, setState.content -> variable string that explains pros/cons of one-word speed-reading.
+	-It will also only the first word of state.content into a WordDisplay component.
+2. Same component as above holding the 'start' and 'change text' buttons with the exact same functionality and state.
+	The render() for changeText will only render the first word until the user hits Start
+	Start() will initiate showWords() which will loop through the array of words, instead of highlighting it will use html() to display and replace each word one at time, speed will again be determined with WPM.
+3. Same WPM component as above, same functionality and state setting.
+
+
+
