@@ -7,7 +7,7 @@ import ControlBar from './components/ControlBar';
 import Spinner from './components/Spinner';
 import Modal from './components/Modal';
 import axios from 'axios';
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import {HashRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import './App.css';
 
 class App extends Component{
