@@ -53,12 +53,16 @@ export default class Modal extends Component {
        }
        return(
           <div className="modal">
-             <form action="" className="flex center vert full-height">
+             <form onSubmit={this.submitContent} className="flex center vert full-height">
                 <label htmlFor="contentTitle">Title</label>
-                <input type="text" name="contentTitle" id="contentTitle" onChange={this.handleTitleInput}/>
+                <input type="text" 
+                name="contentTitle" 
+                id="contentTitle" 
+                onChange={this.handleTitleInput} 
+                required/>
                 <label htmlFor="content">Content</label>
-                <textarea name="content" id="content" value={this.state.userInput} onChange={this.handleContentInput} ></textarea>
-                <input className="submitBtn" type="submit" value="Submit" onClick={this.submitContent}/>
+                <textarea required name="content" id="content" value={this.state.userInput} onChange={this.handleContentInput} required></textarea>
+                <input className="submitBtn" type="submit" value="Submit" />
                 <button className="cancelBtn" onClick={(e) =>{this.props.closeModal(e)}}>Cancel</button>
              </form>
           </div>
