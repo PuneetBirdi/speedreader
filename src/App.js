@@ -185,7 +185,7 @@ render(){
             <div className="App">
         <NavBar/>
         <Switch>
-          <Route exact path = "/">
+          <Route exact path = "/speedreader">
             <HomeMenu
               getReadingTypeFunc = {this.getReadingType}
             />
