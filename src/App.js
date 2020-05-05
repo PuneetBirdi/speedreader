@@ -54,14 +54,6 @@ class App extends Component{
     })
   }  
 
-  //Then it will set it into the paragraphArray in the state, where it will be referenced to further split by words.
-  // splitByParagraph = (largeString) =>{
-  //   const splitParagraphs = largeString.split("\n\n");
-  //   this.setState({
-  //     paragraphArray: splitParagraphs
-  //   });
-  // }
-
 
   //this function will receive an array of paragraphs, map through them and output an array where each word is separated into its own string.
   //Then it will feed the result into renderArray, which is sent to Highlighter.js to be rendered onto the page.
@@ -136,28 +128,28 @@ class App extends Component{
 
   //this function will loop through the displayed words and apply the focus styling to each one, while also removing it from the trailing word
     //this function will loop through the displayed words and apply the focus styling to each one, while also removing it from the trailing word
-    highlight = (interval) =>{
-      const length = this.state.renderArray.flat().length;
-        this.setState({
-          isReading: true,
-        })
-        for (let index = 1; index <= length; index++) {
-          document.getElementById(0).className = "focus";
-              setTimeout(() =>{
-                  if(this.state.isReading === true && index < length){
-                    console.log(index);
-                    console.log(length)
-                    document.getElementById(index - 1).className = "";
-                    document.getElementById(index).className = "focus";
-                }else if(index === length){
-                    document.getElementById(index - 1).className = "";
-                    this.setState({
-                      isReading: false
-                    })
-                }
-              }, index * interval)
-          }
-      }
+  highlight = (interval) =>{
+    const length = this.state.renderArray.flat().length;
+      this.setState({
+        isReading: true,
+      })
+      for (let index = 1; index <= length; index++) {
+        document.getElementById(0).className = "focus";
+            setTimeout(() =>{
+                if(this.state.isReading === true && index < length){
+                  console.log(index);
+                  console.log(length)
+                  document.getElementById(index - 1).className = "";
+                  document.getElementById(index).className = "focus";
+              }else if(index === length){
+                  document.getElementById(index - 1).className = "";
+                  this.setState({
+                    isReading: false
+                  })
+              }
+            }, index * interval)
+        }
+    }
   
   //this function will force a reload of the page
   stopReset = (e) =>{
