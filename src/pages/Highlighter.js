@@ -49,8 +49,5 @@ class Highlighter extends Component{
    }
 }
 
-Highlighter.propTypes = {
-
-};
 
 export default Highlighter;
