@@ -50,3 +50,4 @@ class Highlighter extends Component{
 
 
 export default Highlighter;
+
