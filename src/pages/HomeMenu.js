@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import paragraphGif from '../assets/paragraph.gif'
 import oneWordGif from '../assets/oneWord.gif'
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 class HomeMenu extends Component {
 

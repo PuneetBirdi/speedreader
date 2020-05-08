@@ -4,10 +4,9 @@ import HomeMenu from './pages/HomeMenu';
 import Highlighter from './pages/Highlighter';
 import SingleWord from './pages/SingleWord';
 import ControlBar from './components/ControlBar';
-import Spinner from './components/Spinner';
 import Modal from './components/Modal';
 import axios from 'axios';
-import {HashRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import {HashRouter as Router, Switch, Route} from 'react-router-dom';
 import './App.css';
 
 class App extends Component{
@@ -27,13 +26,6 @@ class App extends Component{
     }
   }
 
-
-
-  componentDidMount(){
-  //This function will grab random data from an API and feed it into the state under paragraphArray. Then call the split by word function.
-  //NOTE: the splitByParagraph is NOT called because the API provides JSON where the paragraphs are already split.
-  // this.getRandomText();
-  }
 
   getRandomText = () =>{
   this.setState({
@@ -107,15 +99,12 @@ class App extends Component{
   //this function will loop through each word in the "renderArray" and display it one at a time in the displayWord box
   loopWord = (interval) =>{
     const wordArray = this.state.renderArray.flat();
-    console.log(wordArray.length);
       if (interval === 0){
         alert("Please set your desired words per minute.")
       }
         for (let index = 0; index <= wordArray.length; index++){
             setTimeout(()=>{
               if(this.state.isReading === true && index < wordArray.length){
-                console.log(index)
-                console.log(wordArray.length)
                 document.getElementById("displayWord").innerHTML = wordArray[index];
               }else if(index === wordArray.length){
                 this.setState({
@@ -137,8 +126,6 @@ class App extends Component{
         document.getElementById(0).className = "focus";
             setTimeout(() =>{
                 if(this.state.isReading === true && index < length){
-                  console.log(index);
-                  console.log(length)
                   document.getElementById(index - 1).className = "";
                   document.getElementById(index).className = "focus";
               }else if(index === length){
