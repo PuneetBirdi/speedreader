@@ -35,6 +35,10 @@ body{
   font-family: 'Lora', serif;
 }
 
+.App{
+  height: 100vh
+}
+
 p{
   margin: 1.0rem;
 }
@@ -79,7 +83,6 @@ h2{
 
 .half-width{
   width: 50%;
-  height: 100%;
 }
 
 .full-width{
@@ -273,6 +276,7 @@ a{
 
 .mainWord{
   font-size: 4.5rem;
+  height: 7.0rem;
   margin: 20rem 0;
   padding: 20px;
   border: 1px solid black;
@@ -326,4 +330,12 @@ input[type="text"]{
   .half-width{
     width: 90%;
   }
+}
+
+.switch-wrapper {
+  position: relative;
+}
+ 
+.switch-wrapper > div {
+  position: absolute;
 }

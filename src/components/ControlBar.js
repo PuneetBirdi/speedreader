@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 class ControlBar extends Component {
    constructor(){
@@ -24,6 +24,9 @@ class ControlBar extends Component {
    };
 
    render() {
+      if(!this.props.isReady){
+         return null
+      }
       return (
          <div className="controlBar wrapper half-width flex center vert">
             <div className="flex center full-width">

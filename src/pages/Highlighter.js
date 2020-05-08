@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Spinner from '../components/Spinner';
-import PropTypes from 'prop-types';
 
 class Highlighter extends Component{
    constructor(){
@@ -51,3 +50,4 @@ class Highlighter extends Component{
 
 
 export default Highlighter;
+
