@@ -9,4 +9,7 @@ Features to work on:
   - Add local storage so the content does not change upon refresh.
   - Implement Firebase for User Authentication, would like if a user could save content to their account.
 
+
+
+Here is the current flow. Note: I made this diagram after having built the first version. After mapping it out I've noticed some areas where it can be improved. Also in future projects I will try to build a process map BEFORE building.
 ![processMap](/v0.9-flow.png)
