@@ -1,4 +1,4 @@
-[Live Site](https://www.puneetbirdi.github.io/speedreader)
+[Live Site](https://puneetbirdi.github.io/speedreader/#/)
 
 Known Issues:
   - DOES NOT WORK IN IE EDGE - not sure why, looking into it.
