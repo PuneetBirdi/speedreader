@@ -8,3 +8,5 @@ Features to work on:
   - Smooth transitions between components.
   - Add local storage so the content does not change upon refresh.
   - Implement Firebase for User Authentication, would like if a user could save content to their account.
+
+![processMap](/v0.9-flow.png)
