@@ -10,6 +10,9 @@ Features to work on:
   - Smooth transitions between pages.
   - Add local storage so the content does not change upon refresh.
   - Implement Firebase for User Authentication, would like if a user could save content to their account.
+  
+  Long-term Goals:
+  - I think this app would be perfect to use in mobile. I'd love to learn React Native once I have some of the bugs ironed out.
 
 
 
