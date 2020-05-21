@@ -190,8 +190,6 @@ render(){
                isReading = {this.state.isReading}
                isReady = {this.state.isReady}
                contentTitle = {this.state.contentTitle}
-               updateIntervalFunc = {this.updateInterval}
-               startReadingFunc = {this.startReading}
                stopReadingFunc = {this.stopReset}
                showModalFunc = {this.showModal}
                getRandomTextFunc = {this.getRandomText}
