@@ -24,9 +24,6 @@ class ControlBar extends Component {
    };
 
    render() {
-      if(!this.props.isReady){
-         return null
-      }
       return (
          <div className="controlBar wrapper half-width flex center vert">
             <div className="flex center full-width">
@@ -38,13 +35,13 @@ class ControlBar extends Component {
                <button className="startBtn" 
                   id="startBtn"
                   onClick={(e) => this.props.startReadingFunc(this.state.interval)}
-                  disabled={!this.props.isReady || this.props.isReading}>
+                  >
                      Start
                </button>
                <button className="stopBtn"
                id="stopBtn"
-               onClick={(e)=> this.props.stopReadingFunc(e)}
-               disabled={!this.props.isReading}>
+               onClick={(e)=> this.props.pauseReadingFunc(e)}
+               >
                   Stop + Reset
                </button>
             </div>
@@ -57,17 +54,7 @@ class ControlBar extends Component {
                step="1"
                onChange={this.calcInterval}
                value={this.state.wpm}
-               disabled={!this.props.isReady || this.props.isReading}/>
-            </div>
-            <div className="flex center full-width">
-               <button className='contentBtn'
-               onClick={(e)=> this.props.showModalFunc(e)}
-               disabled={!this.props.isReady || this.props.isReading}
-               >Add Text</button>
-               <button className='contentBtn'
-               disabled={!this.props.isReady || this.props.isReading}
-               onClick={(e)=> this.props.getRandomTextFunc(e)}
-               >Randomize Text</button>
+               />
             </div>
          </div>
       );

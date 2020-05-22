@@ -3,9 +3,6 @@ import NavBar from './components/NavBar';
 import HomeMenu from './pages/HomeMenu';
 import Highlighter from './pages/Highlighter';
 import SingleWord from './pages/SingleWord';
-import ControlBar from './components/ControlBar';
-import Modal from './components/Modal';
-import axios from 'axios';
 import {HashRouter as Router, Switch, Route} from 'react-router-dom';
 import './App.css';
 
@@ -27,24 +24,24 @@ class App extends Component{
   }
 
 
-  getRandomText = () =>{
-  this.setState({
-    isLoading: true
-  })
-    axios({
-      url: `https://litipsum.com/api/json`,
-      method: 'GET'
-    }).then((response)=>{
-      this.setState({
-        paragraphArray: response.data.text,
-        contentTitle: response.data.title,
-      })
-      this.splitByWord(this.state.paragraphArray);
-      this.setState({
-        isLoading: false
-      })
-    })
-  }  
+  // getRandomText = () =>{
+  // this.setState({
+  //   isLoading: true
+  // })
+  //   axios({
+  //     url: `https://litipsum.com/api/json`,
+  //     method: 'GET'
+  //   }).then((response)=>{
+  //     this.setState({
+  //       paragraphArray: response.data.text,
+  //       contentTitle: response.data.title,
+  //     })
+  //     this.splitByWord(this.state.paragraphArray);
+  //     this.setState({
+  //       isLoading: false
+  //     })
+  //   })
+  // }  
 
 
   //this function will receive an array of paragraphs, map through them and output an array where each word is separated into its own string.
@@ -185,7 +182,7 @@ render(){
           </Route>
         </Switch>
         <div className="flex center">
-            <ControlBar
+            {/* <ControlBar
                isLoading = {this.state.isLoading}
                isReading = {this.state.isReading}
                isReady = {this.state.isReady}
@@ -193,12 +190,14 @@ render(){
                stopReadingFunc = {this.stopReset}
                showModalFunc = {this.showModal}
                getRandomTextFunc = {this.getRandomText}
-            />
-            <Modal 
+               startReadingFunc = {this.loopWord}
+               updateIntervalFunc = {this.updateInterval}
+            /> */}
+            {/* <Modal 
             showModal = {this.state.showModal}
             closeModal = {this.closeModal}
             getReadingTypeFunc = {this.getReadingContent}
-            />
+            /> */}
           </div>
       </div>
       </Router>
