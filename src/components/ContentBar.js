@@ -22,7 +22,7 @@ export default class ContentBar extends Component {
       this.setState({
           renderArray: wordArray
       }, () =>{
-         this.props.setContent(this.state.renderArray)
+         this.props.setContent(this.state.renderArray, this.state.contentTitle)
       })
    }
    

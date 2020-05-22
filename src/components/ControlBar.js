@@ -27,11 +27,6 @@ class ControlBar extends Component {
       return (
          <div className="controlBar wrapper half-width flex center vert">
             <div className="flex center full-width">
-               <p>Content Loaded:
-                  <strong> {this.props.contentTitle}</strong>
-               </p>
-            </div>
-            <div className="flex center full-width">
                <button className="startBtn" 
                   id="startBtn"
                   onClick={(e) => this.props.startReadingFunc(this.state.interval)}
@@ -42,7 +37,13 @@ class ControlBar extends Component {
                id="stopBtn"
                onClick={(e)=> this.props.pauseReadingFunc(e)}
                >
-                  Stop + Reset
+                  Pause
+               </button>
+               <button className="stopBtn"
+               id="stopBtn"
+               onClick={(e)=> this.props.resumeReadingFunc(e)}
+               >
+                  Resume
                </button>
             </div>
             <div className="flex center full-width vert">
