@@ -338,3 +338,15 @@ input[type="text"]{
 .switch-wrapper > div {
   position: absolute;
 }
+
+
+
+.highlighterBox{
+  opacity: 0.4;
+}
+
+.highlighterBox:hover{
+  border: 1px solid gray;
+  transform: none;
+  cursor: default;
+}

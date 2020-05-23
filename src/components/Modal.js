@@ -43,7 +43,6 @@ export default class Modal extends Component {
 
    submitContent = (e)  =>{
       e.preventDefault();
-      this.props.getReadingTypeFunc(this.state.contentTitle, this.state.userContentArray)
       this.props.closeModal(e);
    }
 

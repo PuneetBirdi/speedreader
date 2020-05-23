@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 // import Spinner from '../components/Spinner';
 import ControlBar from '../components/ControlBar';
 import ContentBar from '../components/ContentBar';
+import Modal from '../components/Modal';
 
-
+let tempIndex = 0;
+let timeout = null;
 class SingleWord extends Component {
    constructor(){
       super();
@@ -15,43 +17,49 @@ class SingleWord extends Component {
          currentIndex: 0,
          focusWord: "READY",
          isReading: false,
-         interval: 600
+         isPaused: false,
+         interval: 600,
+         showModal: false
       }
    }
 
-
-   componentWillUnmount(){
-      this.props.getReadingTypeFunc(null, false);
-   }
-
-   read = () => {
+   start = () => {
       this.setState({
          isReading: true,
       })
-      let currentIndex = this.state.currentIndex
-      for (let index = 0; index < this.state.renderArray.length; index++) {
-         window.setTimeout(() =>{
-            if(this.state.isReading){
-               console.log(this.state.interval)
-               this.setState({
-                  focusWord: this.state.renderArray[currentIndex]
-               })
-               currentIndex++
-            }
-         }, index * this.state.interval)
-      }
+      this.loop()
    }
 
    pause = () =>{
       this.setState({
-         isReading: false
+         isPaused: true
       })
    }
 
    resume = () =>{
       this.setState({
-         isReading: true
+         isPaused: false
       })
+   }
+
+   reset = () =>{
+      tempIndex = 0;
+      clearTimeout(timeout);
+      this.setState({
+         isReading: false,
+         isPaused: false,
+         currentIndex: 0,
+      })
+   }
+
+   loop = () =>{
+      if(this.state.isReading && !this.state.isPaused){
+         tempIndex++
+         this.setState({
+            currentIndex: tempIndex
+         })
+      }
+      timeout = window.setTimeout(this.loop, this.state.interval)
    }
 
    
@@ -68,29 +76,52 @@ class SingleWord extends Component {
          contentTitle: title
       })
    }
+         
+   showModal = (e) =>{
+      e.preventDefault();
+      this.setState({
+        showModal: true
+      })
+    }
+  
+    closeModal = (e) =>{
+      e.preventDefault();
+      this.setState({
+        showModal: false
+      })
+    }
+  
 
    render() {
       return (
          <div>
             <div className="flex center vert">
-               <h3>{this.state.contentTitle}</h3>
+               <h3>{this.state.contentTitle} </h3>
                <div className="wordContainer center wrapper half-width">
                   <span className="flex center mainWord" id="displayWord">
-                     {this.state.focusWord}
+                     {this.state.renderArray[this.state.currentIndex]}
                   </span>
                </div>
             </div>
             <div className="flex vert center">
             <ControlBar
-            startReadingFunc = {this.read}
+            startReadingFunc = {this.start}
             updateIntervalFunc = {this.updateInterval}
             pauseReadingFunc = {this.pause}
             resumeReadingFunc = {this.resume}
+            resetFunc = {this.reset}
             isReading = {this.state.isReading}
+            isPaused = {this.state.isPaused}
             />
             <ContentBar
                defaultContent = {this.state.defaultContent}
                setContent = {this.setContent}
+               closeModal = {this.closeModal}
+               showModalFunc = {this.showModal}
+            />
+            <Modal
+               showModal = {this.state.showModal}
+               closeModal = {this.closeModal}
             />
             </div>
          </div>

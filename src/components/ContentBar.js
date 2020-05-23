@@ -44,8 +44,6 @@ export default class ContentBar extends Component {
           })
         })
       }
-       
-   
    render() {
       return (
          <div className="contentBar wrapper half-width flex center vert">
