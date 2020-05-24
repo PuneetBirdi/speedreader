@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-// import Spinner from '../components/Spinner';
+import Spinner from '../components/Spinner';
 import ControlBar from '../components/ControlBar';
 import ContentBar from '../components/ContentBar';
-import Modal from '../components/Modal';
 
 let tempIndex = 0;
 let timeout = null;
@@ -10,7 +9,6 @@ class SingleWord extends Component {
    constructor(){
       super();
       this.state = {
-         type: "singleWord",
          defaultContent: [`Hello! You're currently using a "single-word" style speed reader. This style seems to be the fastest way to consume content. There is something about our brains that lets us process words much faster when we don't have to worry about moving our eyes, or ignoring other words. Go ahead and try to play around with the words per minute setting! I think you'll be surprised at how fast you can go when you learn to trust yourself. Although this may be quick it's not the most practical form of speed reading as you won't be very helpful outside of this app. It's also not the best for reading novels, or other forms of media where the author has used punctuation and spacing in order to control the pace. But if you need to quickly devour a Wikipedia article before you walk into your next exam, this might just be your best bet. Go ahead and try to add your own content, or get a random passage of text with the control bar below!`],
          renderArray: [],
          contentTitle: "Single Word Reading",
@@ -18,8 +16,8 @@ class SingleWord extends Component {
          focusWord: "READY",
          isReading: false,
          isPaused: false,
+         isLoading: false,
          interval: 600,
-         showModal: false
       }
    }
 
@@ -90,13 +88,26 @@ class SingleWord extends Component {
         showModal: false
       })
     }
-  
+    
+
+    getChildState = (isLoading) =>{
+       this.setState({
+          isLoading: isLoading
+       })
+    }
 
    render() {
+      if(this.state.isLoading) return(
+         <div className="flex center vert">
+               <div className="wordContainer center wrapper half-width">
+                  <span className="flex center mainWord" id="displayWord"><Spinner/></span>
+               </div>
+            </div>
+      )
       return (
          <div>
             <div className="flex center vert">
-               <h3>{this.state.contentTitle} </h3>
+               <h3>{this.state.contentTitle}</h3>
                <div className="wordContainer center wrapper half-width">
                   <span className="flex center mainWord" id="displayWord">
                      {this.state.renderArray[this.state.currentIndex]}
@@ -115,13 +126,11 @@ class SingleWord extends Component {
             />
             <ContentBar
                defaultContent = {this.state.defaultContent}
+               contentTitle = {this.state.contentTitle}
                setContent = {this.setContent}
                closeModal = {this.closeModal}
                showModalFunc = {this.showModal}
-            />
-            <Modal
-               showModal = {this.state.showModal}
-               closeModal = {this.closeModal}
+               getState = {this.getChildState}
             />
             </div>
          </div>

@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import Modal from '../components/Modal';
 import axios from 'axios';
 
 export default class ContentBar extends Component {
    constructor(){
       super();
       this.state = {
-
+         showModal: false,
+         contentTitle: "",
+         rawContent: "",
+         isLoading: false
       }
    }
 
@@ -13,7 +17,7 @@ export default class ContentBar extends Component {
       this.splitByWord(this.props.defaultContent)
    }
 
-   splitByWord = (array) =>{
+   splitByWord = (array, contentTitle) =>{
       const wordArray = [];
         array.map((p)=>{
           const word = p.split(` `);
@@ -44,17 +48,54 @@ export default class ContentBar extends Component {
           })
         })
       }
+
+   showModal = (e) =>{
+      e.preventDefault();
+      this.setState({
+      showModal: true
+      })
+   }
+     
+   closeModal = (e) =>{
+      e.preventDefault();
+      this.setState({
+         showModal: false
+      })
+   }
+
+   //this function will grab the input from the state and split it up into an array of separate paragraphs
+   splitByParagraph = (rawContent, contentTitle) =>{
+      const paragraphs = rawContent.split("\n")
+      const paragraphArray = [];
+      //this block will ensure that no empty arrays are pushed into the state in the even that the user uses double spaces between lines
+      paragraphs.map((p) =>{
+         if(p != "") paragraphArray.push(p);
+      });
+      //after ensuring there are no empties, the array can be loaded into the state
+      this.setState({
+         userContentArray: paragraphArray,
+         contentTitle: contentTitle
+      }, ()=>{
+         this.splitByWord(this.state.userContentArray)
+      })
+   }
+
    render() {
       return (
          <div className="contentBar wrapper half-width flex center vert">
             <div className="flex center full-width">
                <button className='contentBtn'
-               onClick={(e)=> this.props.showModalFunc(e)}
+               onClick={this.showModal}
                >Add Text</button>
                <button className='contentBtn'
                onClick={this.getRandomText}
                >Randomize Text</button>
             </div>
+            <Modal
+               showModal = {this.state.showModal}
+               closeModal = {this.closeModal}
+               processContentFunc = {this.splitByParagraph}
+            />
          </div>
       )
    }
