@@ -175,6 +175,7 @@ input[type=range]::-moz-range-thumb {
   cursor: pointer;
 }
 
+
 .startBtn, 
 .contentBtn, 
 .stopBtn,
@@ -278,7 +279,6 @@ a{
   height: 7.0rem;
   margin: 20rem 0;
   padding: 20px;
-  border: 1px solid black;
 }
 
 /* -------------INPUT MODAL STYLING------------- */

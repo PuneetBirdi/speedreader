@@ -50,12 +50,23 @@ class SingleWord extends Component {
       })
    }
 
+   changePosition = (e) =>{
+      this.setState({
+         isPaused: true,
+         currentIndex: e.target.value
+      }, () =>{
+         tempIndex = this.state.currentIndex
+      })
+   }
+
    loop = () =>{
-      if(this.state.isReading && !this.state.isPaused){
+      if(this.state.isReading && !this.state.isPaused && this.state.currentIndex < this.state.renderArray.length){
          tempIndex++
          this.setState({
             currentIndex: tempIndex
          })
+      }else if(this.state.currentIndex === this.state.renderArray.length){
+         this.pause();
       }
       timeout = window.setTimeout(this.loop, this.state.interval)
    }
@@ -108,10 +119,14 @@ class SingleWord extends Component {
          <div>
             <div className="flex center vert">
                <h3>{this.state.contentTitle}</h3>
-               <div className="wordContainer center wrapper half-width">
+               <div className="wordContainer flex vert center wrapper half-width">
                   <span className="flex center mainWord" id="displayWord">
                      {this.state.renderArray[this.state.currentIndex]}
                   </span>
+                  <label htmlFor="progressBar">Progress</label>
+                  <input class="progressBar" type="range" name="progressBar" min="0" max={this.state.renderArray.length} value={this.state.currentIndex}
+                  onChange={this.changePosition}
+                  />
                </div>
             </div>
             <div className="flex vert center">
