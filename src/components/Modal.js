@@ -6,11 +6,10 @@ export default class Modal extends Component {
       this.state={
          contentTitle:"",
          userInput: "",
-         userContentArray: []
       }
    }
 
-   //this function will grab the content title and load itinot the component state.
+   //this function will grab the content title and load into the component state.
    handleTitleInput = (event) =>{
       event.preventDefault();
       this.setState({
@@ -24,26 +23,11 @@ export default class Modal extends Component {
       this.setState({
         userInput: event.target.value
       })
-      this.splitByParagraph();
     }
-   
-    //this function will grab the input from the state and split it up into an array of separate paragraphs
-   splitByParagraph = () =>{
-      const paragraphs = this.state.userInput.split("\n")
-      const paragraphArray = [];
-      //this block will ensure that no empty arrays are pushed into the state in the even that the user uses double spaces between lines
-      paragraphs.map((p) =>{
-         if(p != "") paragraphArray.push(p);
-      });
-      //after ensuring there are no empties, the array can be loaded into the state
-      this.setState({
-         userContentArray: paragraphArray
-      })
-   }
 
    submitContent = (e)  =>{
       e.preventDefault();
-      this.props.getReadingTypeFunc(this.state.contentTitle, this.state.userContentArray)
+      this.props.processContentFunc(this.state.userInput, this.state.contentTitle)
       this.props.closeModal(e);
    }
 
@@ -58,7 +42,8 @@ export default class Modal extends Component {
                 <input type="text" 
                 name="contentTitle" 
                 id="contentTitle" 
-                onChange={this.handleTitleInput} 
+                onChange={this.handleTitleInput}
+                value={this.state.contentTitle}
                 required/>
                 <label htmlFor="content">Content</label>
                 <textarea required name="content" id="content" value={this.state.userInput} onChange={this.handleContentInput} required></textarea>

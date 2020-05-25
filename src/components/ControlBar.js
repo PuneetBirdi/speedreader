@@ -23,29 +23,55 @@ class ControlBar extends Component {
       this.props.updateIntervalFunc(interval);
    };
 
-   render() {
-      if(!this.props.isReady){
-         return null
+   // resetBtn = () =>{
+   //    return
+   //    <button className="startBtn" 
+   //    id="startBtn"
+   //    onClick={(e) => this.props.startReadingFunc(this.state.interval)}>
+   //          Reset
+   //    </button>
+   // }
+
+   startOrReset = () =>{
+      if (!this.props.isReading){
+         return(
+            <button className="startBtn" 
+            id="startBtn"
+            onClick={(e) => this.props.startReadingFunc(this.state.interval)}
+            disabled = {this.props.isReading}
+            >
+                  Start
+            </button>
+         )
+      }else if(this.props.isPaused || this.props.isReading){
+         return(
+            <button className="startBtn" 
+            id="startBtn"
+            onClick={(e) => this.props.resetFunc(e)}>
+                  Reset
+            </button>
+         )
       }
+   }
+
+   render() {
       return (
          <div className="controlBar wrapper half-width flex center vert">
             <div className="flex center full-width">
-               <p>Content Loaded:
-                  <strong> {this.props.contentTitle}</strong>
-               </p>
-            </div>
-            <div className="flex center full-width">
-               <button className="startBtn" 
-                  id="startBtn"
-                  onClick={(e) => this.props.startReadingFunc(this.state.interval)}
-                  disabled={!this.props.isReady || this.props.isReading}>
-                     Start
+               <this.startOrReset/>
+               <button className="stopBtn"
+               id="stopBtn"
+               onClick={(e)=> this.props.pauseReadingFunc(e)}
+               disabled = {!this.props.isReading && !this.props.isPaused}
+               >
+                  Pause
                </button>
                <button className="stopBtn"
                id="stopBtn"
-               onClick={(e)=> this.props.stopReadingFunc(e)}
-               disabled={!this.props.isReading}>
-                  Stop + Reset
+               onClick={(e)=> this.props.resumeReadingFunc(e)}
+               disabled = {!this.props.isPaused}
+               >
+                  Resume
                </button>
             </div>
             <div className="flex center full-width vert">
@@ -57,17 +83,7 @@ class ControlBar extends Component {
                step="1"
                onChange={this.calcInterval}
                value={this.state.wpm}
-               disabled={!this.props.isReady || this.props.isReading}/>
-            </div>
-            <div className="flex center full-width">
-               <button className='contentBtn'
-               onClick={(e)=> this.props.showModalFunc(e)}
-               disabled={!this.props.isReady || this.props.isReading}
-               >Add Text</button>
-               <button className='contentBtn'
-               disabled={!this.props.isReady || this.props.isReading}
-               onClick={(e)=> this.props.getRandomTextFunc(e)}
-               >Randomize Text</button>
+               />
             </div>
          </div>
       );

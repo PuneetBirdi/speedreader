@@ -10,14 +10,6 @@ class Highlighter extends Component{
       }
    }
 
-   componentDidMount(){
-      this.props.getReadingTypeFunc("highlighter", true, this.state.highlighterArray,this.state.contentTitle);
-   }
-
-   componentWillUnmount(){
-      this.props.getReadingTypeFunc(null, false);
-   }
-
 
    render(){
       let wordKey = -1;

@@ -131,7 +131,6 @@ button{
 .controlBar{
   margin: 2.0rem;
   padding: 2.0rem;
-  border: 1px solid black;
 }
 
 label{
@@ -175,6 +174,7 @@ input[type=range]::-moz-range-thumb {
   border: 1px solid black;
   cursor: pointer;
 }
+
 
 .startBtn, 
 .contentBtn, 
@@ -279,7 +279,6 @@ a{
   height: 7.0rem;
   margin: 20rem 0;
   padding: 20px;
-  border: 1px solid black;
 }
 
 /* -------------INPUT MODAL STYLING------------- */
@@ -338,4 +337,16 @@ input[type="text"]{
  
 .switch-wrapper > div {
   position: absolute;
+}
+
+
+
+.highlighterBox{
+  opacity: 0.4;
+}
+
+.highlighterBox:hover{
+  border: 1px solid gray;
+  transform: none;
+  cursor: default;
 }
